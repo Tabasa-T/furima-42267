@@ -23,7 +23,7 @@
 |Column            |Type      |Options                       |
 |------------------|----------|------------------------------|
 |name              |string    |null: false                   |
-|text              |text      |null: false                   |
+|description       |text      |null: false                   |
 |price             |integer   |null: false                   |
 |category_id       |integer   |null: false                   |
 |condition_id      |integer   |null: false                   |
