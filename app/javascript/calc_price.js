@@ -1,24 +1,23 @@
-function calcTax() {
-  const price = document.getElementById("item-price");
-  const tax = document.getElementById("add-tax-price");
-  const profit = document.getElementById("profit");
+function price(){
+  const priceInput = document.getElementById("item-price");
+  const addTaxDOM = document.getElementById("add-tax-price");
+  const profitDOM = document.getElementById("profit");
 
-  if (price) {
-    price.addEventListener("keyup", () => {
-      const inputValue = parseInt(price.value);
-
-      if (!isNaN(inputValue)) {
-        const taxValue = Math.floor(inputValue * 0.1);
-        const profitValue = inputValue - taxValue;
-
-        tax.textContent = taxValue;
-        profit.textContent = profitValue;
-      } else {
-        tax.textContent = '';
-        profit.textContent = '';
+  if(priceInput){
+    priceInput.addEventListener("input",() => {
+      const value = parseInt(priceInput.value);
+      if(!isNaN(value)){
+        const tax = Math.floor(value * 0.1);
+        addTaxDOM.innerHTML = tax.toLocaleString();
+        profitDOM.innerHTML = (value - tax).toLocaleString();
+      }else{
+        addTaxDOM.innerHTML = '';
+        profitDOM.innerHTML = '';
       }
     });
   }
-};
+}
 
-window.addEventListener("DOMContentLoaded", calcTax);
+
+window.addEventListener("turbo:load", price);
+window.addEventListener("turbo:render", price);
