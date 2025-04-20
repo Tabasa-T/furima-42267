@@ -31,27 +31,27 @@ RSpec.describe Item, type: :model do
       it 'priceに数字以外が入っていると出品できない' do
         @item.price = '1aaaた'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字で300〜9,999,999円の間で入力してください")
+        expect(@item.errors.full_messages).to include("Price 300〜9,999,999円の間で入力してください")
       end
       it 'priceは整数でないと出品できない' do
         @item.price = 300.1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字で300〜9,999,999円の間で入力してください")
+        expect(@item.errors.full_messages).to include("Price 300〜9,999,999円の間で入力してください")
       end
       it 'priceは299以下では出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字で300〜9,999,999円の間で入力してください")
+        expect(@item.errors.full_messages).to include("Price 300〜9,999,999円の間で入力してください")
       end
       it 'priceは10_000_000以上では出品できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字で300〜9,999,999円の間で入力してください")
+        expect(@item.errors.full_messages).to include("Price 300〜9,999,999円の間で入力してください")
       end
       it 'priceは半角数字でないと出品できない' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字で300〜9,999,999円の間で入力してください")
+        expect(@item.errors.full_messages).to include("Price 300〜9,999,999円の間で入力してください")
       end
       it 'category_idが1だと出品できない' do
         @item.category_id = 1
