@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :family_name, presence: true, format: { with: VALID_ZENKAKU_REGEX, message: 'は全角文字で入力してください' }
   validates :first_name, presence: true, format: { with: VALID_ZENKAKU_REGEX, message: 'は全角文字で入力してください' }
-  validates :family_name_kana, presence: true,  format: { with: VALID_KATAKANA_REGEX, message: 'は全角カタカナで入力してください' }
-  validates :first_name_kana, presence: true,  format: { with: VALID_KATAKANA_REGEX, message: 'は全角カタカナで入力してください' }
+  validates :family_name_kana, presence: true, format: { with: VALID_KATAKANA_REGEX, message: 'は全角カタカナで入力してください' }
+  validates :first_name_kana, presence: true, format: { with: VALID_KATAKANA_REGEX, message: 'は全角カタカナで入力してください' }
   validates :birthday, presence: true
 end

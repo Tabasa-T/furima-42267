@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
-
   belongs_to :user
-  #has_one :order
+  # has_one :order
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -10,7 +9,6 @@ class Item < ApplicationRecord
   belongs_to :shipping_burden
   belongs_to :prefecture
   belongs_to :shipping_day
-
 
   validates :name,                presence: true
   validates :description,         presence: true
@@ -26,7 +24,5 @@ class Item < ApplicationRecord
   validates :shipping_burden_id,  presence: true, numericality: { other_than: 1 }
   validates :prefecture_id,       presence: true, numericality: { other_than: 1 }
   validates :shipping_day_id,     presence: true, numericality: { other_than: 1 }
-  validates :image,                presence: true
+  validates :image, presence: true
 end
-
-
