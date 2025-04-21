@@ -26,7 +26,6 @@ class Item < ApplicationRecord
   validates :shipping_burden_id,  presence: true, numericality: { other_than: 1 }
   validates :prefecture_id,       presence: true, numericality: { other_than: 1 }
   validates :shipping_day_id,     presence: true, numericality: { other_than: 1 }
-  validates :user,                presence: true
   validates :image,                presence: true
 end
 
