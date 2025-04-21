@@ -21,7 +21,6 @@ class Item < ApplicationRecord
                                     less_than_or_equal_to: 9_999_999,
                                     message: '300〜9,999,999円の間で入力してください'
                                   }
-  validates :price,               format: { with: /\A[0-9]+\z/, message: '半角数字で入力してください'}
   validates :category_id,         presence: true, numericality: { other_than: 1 }
   validates :condition_id,        presence: true, numericality: { other_than: 1 }
   validates :shipping_burden_id,  presence: true, numericality: { other_than: 1 }
