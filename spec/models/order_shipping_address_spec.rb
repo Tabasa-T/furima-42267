@@ -8,7 +8,6 @@ RSpec.describe OrderShippingAddress, type: :model do
   end
 
   describe '配送先情報の保存' do
-
     context '配送先情報が保存できるとき' do
       it 'すべての値が正しく入力されていれば保存できる' do
         expect(@order_shipping_address).to be_valid
@@ -28,7 +27,7 @@ RSpec.describe OrderShippingAddress, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できない' do
         @order_shipping_address.postal_code = '1200000'
         @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include("Postal code は「123-4567」の形式で入力してください")
+        expect(@order_shipping_address.errors.full_messages).to include('Postal code は「123-4567」の形式で入力してください')
       end
       it 'prefecture_idが空だと保存できない' do
         @order_shipping_address.prefecture_id = ''
@@ -38,12 +37,12 @@ RSpec.describe OrderShippingAddress, type: :model do
       it 'prefecture_idは半角数字でないと保存できない' do
         @order_shipping_address.prefecture_id = '２'
         @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include("Prefecture is not a number")
+        expect(@order_shipping_address.errors.full_messages).to include('Prefecture is not a number')
       end
       it 'prefecture_idが1だと保存できない' do
         @order_shipping_address.prefecture_id = 1
         @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@order_shipping_address.errors.full_messages).to include('Prefecture must be other than 1')
       end
       it 'cityが空だと保存できない' do
         @order_shipping_address.city = ''
@@ -63,19 +62,19 @@ RSpec.describe OrderShippingAddress, type: :model do
       it 'phone_numberはハイフンがあると保存できない' do
         @order_shipping_address.phone_number = '090-1234-5678'
         @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include("Phone number はハイフンなしの10〜11桁で入力してください")
+        expect(@order_shipping_address.errors.full_messages).to include('Phone number はハイフンなしの10〜11桁で入力してください')
       end
       it 'phone_numberは9桁だと保存できない' do
         @order_shipping_address.phone_number = '090000000'
         @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include("Phone number はハイフンなしの10〜11桁で入力してください")
+        expect(@order_shipping_address.errors.full_messages).to include('Phone number はハイフンなしの10〜11桁で入力してください')
       end
       it 'phone_numberは12桁だと保存できない' do
         @order_shipping_address.phone_number = '090000000000'
         @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include("Phone number はハイフンなしの10〜11桁で入力してください")
+        expect(@order_shipping_address.errors.full_messages).to include('Phone number はハイフンなしの10〜11桁で入力してください')
       end
-        it 'tokenが空では保存できない' do
+      it 'tokenが空では保存できない' do
         @order_shipping_address.token = nil
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include("Token can't be blank")
