@@ -3,14 +3,12 @@ class OrderShippingAddress
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :token
 
   with_options presence: true do
-    validates :user_id, :item_id, :city, :address
+    validates :user_id, :item_id, :city, :address, :prefecture_id, :token
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'は「123-4567」の形式で入力してください' }
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'はハイフンなしの10〜11桁で入力してください' }
   end
 
   validates :prefecture_id, numericality: { only_integer: true, other_than: 1 }
-  validates :prefecture_id, presence: true
-  validates :token, presence: true
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
